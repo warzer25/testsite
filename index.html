@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4x4 Clickable Grid</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-gap: 5px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .grid-item {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: opacity 0.5s;
+    }
+    .grid-item.revealed {
+      opacity: 0; /* Fade out effect */
+      pointer-events: none; /* Disable clicks */
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">4x4 Clickable Grid</h2>
+  <div class="grid-container">
+    <!-- 16 grid items -->
+    <div class="grid-item" onclick="cellClicked(this, 1)">1</div>
+    <div class="grid-item" onclick="cellClicked(this, 2)">2</div>
+    <div class="grid-item" onclick="cellClicked(this, 3)">3</div>
+    <div class="grid-item" onclick="cellClicked(this, 4)">4</div>
+    <div class="grid-item" onclick="cellClicked(this, 5)">5</div>
+    <div class="grid-item" onclick="cellClicked(this, 6)">6</div>
+    <div class="grid-item" onclick="cellClicked(this, 7)">7</div>
+    <div class="grid-item" onclick="cellClicked(this, 8)">8</div>
+    <div class="grid-item" onclick="cellClicked(this, 9)">9</div>
+    <div class="grid-item" onclick="cellClicked(this, 10)">10</div>
+    <div class="grid-item" onclick="cellClicked(this, 11)">11</div>
+    <div class="grid-item" onclick="cellClicked(this, 12)">12</div>
+    <div class="grid-item" onclick="cellClicked(this, 13)">13</div>
+    <div class="grid-item" onclick="cellClicked(this, 14)">14</div>
+    <div class="grid-item" onclick="cellClicked(this, 15)">15</div>
+    <div class="grid-item" onclick="cellClicked(this, 16)">16</div>
+  </div>
+
+  <!-- Reset button -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="resetGrid()">Reset Grid</button>
+  </div>
+
+  <script>
+    // Generate a random user ID if one does not exist
+    let currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+      currentUser = Math.floor(Math.random() * 10000); // Generates a random user ID
+      localStorage.setItem('currentUser', currentUser);
+    }
+
+    // Function to handle clicking on a cell
+    function cellClicked(cell, cellNumber) {
+      const clickedCells = JSON.parse(localStorage.getItem('clickedCells')) || {};
+
+      // Initialize the user's clicked cells if not already done
+      if (!clickedCells[currentUser]) {
+        clickedCells[currentUser] = [];
+      }
+
+      // Check if the user has already clicked any cell
+      if (clickedCells[currentUser].length >= 1) {
+        alert("You can only click one cell per session!");
+        return; // Prevent further clicks if already clicked one cell
+      }
+
+      // Mark the cell as revealed
+      cell.classList.add('revealed');
+      clickedCells[currentUser].push(cellNumber);
+      localStorage.setItem('clickedCells', JSON.stringify(clickedCells));
+    }
+
+    // Load clicked cells from localStorage
+    function loadClickedCells() {
+      const clickedCells = JSON.parse(localStorage.getItem('clickedCells')) || {};
+      // Check if the current user has clicked any cells
+      if (clickedCells[currentUser] && clickedCells[currentUser].length > 0) {
+        // Hide the clicked cell
+        const clickedCellNumber = clickedCells[currentUser][0]; // Get the first clicked cell
+        const cell = document.querySelector(`.grid-item:nth-child(${clickedCellNumber})`);
+        if (cell) {
+          cell.classList.add('revealed');
+        }
+      }
+    }
+
+    // Function to reset the grid
+    function resetGrid() {
+      // Clear the specific user's clicked cells from localStorage
+      const clickedCells = JSON.parse(localStorage.getItem('clickedCells')) || {};
+      delete clickedCells[currentUser]; // Remove current user clicks
+      localStorage.setItem('clickedCells', JSON.stringify(clickedCells));
+      // Remove 'revealed' class from all grid items
+      document.querySelectorAll('.grid-item').forEach(cell => {
+        cell.classList.remove('revealed');
+      });
+    }
+
+    // Load clicked cells when page loads
+    window.onload = loadClickedCells;
+  </script>
+</body>
+</html>

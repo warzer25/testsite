@@ -1,0 +1,51 @@
+/* Styles for the grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    max-width: 420px;
+    background-image: url('image-1.png'); /* Add your image path here */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* Styles for each grid cell */
+  .grid-item {
+    background-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    opacity: 1; /* Fully visible initially */
+  }
+  
+  /* Hover effect */
+  .grid-item:hover {
+    background-color: #45a049;
+  }
+  
+  /* Animation for moving down and fading out */
+  @keyframes moveDownFadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0); /* Start at original position */
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px); /* Move 20px down */
+    }
+  }
+  
+  /* Apply animation on click */
+  .grid-item.revealed {
+    animation: moveDownFadeOut 0.5s forwards;
+    pointer-events: none; /* Disable further clicks */
+  }
+  
