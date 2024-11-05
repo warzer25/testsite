@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Class Schedule</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Weekly Class Schedule</h1>
+
+<table id="scheduleTable">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>9:00 - 11:00</th>
+      <th>11:00 - 1:00</th>
+      <th>1:00 - 3:00</th>
+      <th>3:00 - 5:00</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- -->
+    <tr id="sunday">
+      <td>Sunday</td>
+      <td colspan="4" class="no-classes">No Classes</td>
+      <td><button onclick="switchSunday()">Switch Classes</button></td>
+    </tr>
+    <!-- -->
+    <tr id="monday">
+      <td>Monday</td>
+      <td>
+        <strong class="theoretical">DBMS (T) - 
+        <span id="A1" class="group-b">G-B</span></strong><br>
+        <span class="teacher">M. Dana</span><br>
+        <span class="location">Hall 4</span>
+      </td>
+      <td>
+        <strong class="theoretical">DBMS (T) - 
+        <span id="A2" class="group-a">G-A</span></strong><br>
+        <span class="teacher">M. Dana</span><br>
+        <span class="location">Hall 4</span>
+      </td>
+      <td class="no-classes">No Classes</td>
+      <td class="no-classes">No Classes</td>
+      <td><button onclick="switchMonday()">Switch Classes</button></td>
+    </tr>
+    <!-- ok -->
+    <tr id="tuesday">
+      <td>Tuesday</td>
+      <td>
+        <strong class="theoretical">Introduction to Statistics (T) - 
+          <span id="B1" class="group-b">G-B</span></strong><br>
+        <span class="teacher">Dr. Miran</span><br>
+        <span class="location">Hall 4</span>
+        <hr>
+        <strong class="practical">DBMS (P) - 
+          <span id="B2" class="group-a">G-A</span></strong><br>
+        <span class="teacher">M. Dana, M. Twana, M. Mailan, Soma</span><br>
+        <span class="location">Lab 6</span>
+      </td>
+      <td>
+        <strong class="theoretical">Introduction to Statistics (T) - 
+          <span id="C1" class="group-a">G-A</span></strong><br>
+        <span class="teacher">Dr. Miran</span><br>
+        <span class="location">Hall 4</span>
+        <hr>
+        <strong class="practical">DBMS (P) - 
+          <span id="C2" class="group-b">G-B</span></strong><br>
+        <span class="teacher">M. Dana, M. Twana, M. Mailan, Soma</span><br>
+        <span class="location">Lab 6</span>
+      </td>
+      <td class="no-classes">No Classes</td>
+      <td class="no-classes">No Classes</td>
+      <td><button onclick="switchTuesday()">Switch Classes</button></td>
+    </tr>
+    <!-- ok -->
+    <tr id="wednesday">
+      <td>Wednesday</td>
+      <td>
+        <strong class="theoretical">OOP (T) - 
+        <span id="Z1" class="group-a">G-A</span></strong><br>
+        <span class="teacher">Dr. M. Askandar</span><br>
+        <span class="location">Lab 6</span>
+        <hr>
+        <strong class="practical">Computer Networks (P) - 
+          <span id="Z2" class="group-b">G-B</span></strong><br>
+          <span class="teacher">M. Kanar, M. Mohammaed, M. Zhir</span><br>
+          <span class="location">Hall 4</span>
+      </td>
+      <td>
+        <strong class="theoretical">OOP (T) -
+        <span id="Z3"class="group-b">G-B</span></strong><br>
+        <span class="teacher">Dr. M. Askandar</span><br>
+        <span class="location">Hall 4</span>
+        <hr>
+        <strong class="practical">Computer Networks (P) - 
+          <span id="Z4" class="group-a">G-A</span></strong><br>
+          <span class="teacher">M. Kanar, M. Mohammaed, M. Zhir</span><br>
+          <span class="location">Lab 6</span>
+      </td>
+      <td>
+        <strong class="practical">OOP (P) - 
+        <span id="Z5" class="group-a">G-A</span></strong><br>
+        <span class="teacher">Dr. M. Askandar</span><br>
+        <span class="location">Lab 6</span>
+        <hr>
+        <strong class="theoretical">Computer Networks (T) -
+          <span id="Z6" class="group-b">G-B</span></strong><br>
+          <span class="teacher">M. Kanar, M. Mohammaed, M. Zhir</span><br>
+          <span class="location">Hall 4</span>
+      </td>
+      <td>
+        <strong class="practical">OOP (P) - 
+        <span id="Z7" class="group-b">G-B</span></strong><br>
+        <span class="teacher">Dr. M. Askandar</span><br>
+        <span class="location">Hall 4</span>
+        <hr>
+        <strong class="theoretical">Computer Networks (T) - 
+          <span id="Z8" class="group-a">G-A</span></strong><br>
+          <span class="teacher">M. Kanar, M. Mohammaed, M. Zhir</span><br>
+          <span class="location">Lab 6</span>
+      </td>
+      <td><button onclick="switchWednesday()">Switch Classes</button></td>
+    </tr>
+
+    <!-- -->
+    <tr id="thursday">
+      <td>Thursday</td>
+      <td>
+        <strong class="theoretical">Web Design (T) - 
+          <span id="D1" class="group-a">G-A-B</span></strong><br>
+        <span class="teacher">Dr. M. Sabah</span><br>
+        <span class="location">Hall 2</span>
+      </td>
+      <td>
+        <strong class="practical">Web Design (P) - 
+          <span id="D2" class="group-a">G-A</span></strong><br>
+        <span class="teacher">Dr. M. Sabah</span><br>
+        <span class="location">Hall 2</span>
+      </td>
+      <td>
+        <strong class="practical">Web Design (P) - 
+          <span id="D3" class="group-b">G-B</span></strong><br>
+        <span class="teacher">Dr. M. Sabah</span><br>
+        <span class="location">Hall 2</span>
+      </td>
+      <td class="no-classes">No Classes</td>
+      <td><button onclick="switchThursday()">Switch Classes</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<button onclick="saveSchedule()">Save Schedule</button>
+<button class="theme-toggle">Toggle Theme</button>
+<script src="script.js"></script>
+</body>
+</html>
