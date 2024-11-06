@@ -4,44 +4,45 @@
 /* Body and header styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #c1e3ff67 0%,  #495b6a 100%); /* Softer gradient */
+    background: linear-gradient(135deg, #c1e3ff67 0%,  #495b6a 100%);
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box; /* Box sizing ensures padding doesn't affect layout */
+    padding: 10px; /* Reduced padding for smaller screens */
+    box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50; /* Darker gray-blue */
-    margin-bottom: 20px; /* Space below title */
+    color: #2c3e50;
+    margin-bottom: 10px; /* Smaller margin */
     font-weight: 700;
-    font-size: 36px;
+    font-size: 28px; /* Reduced font size */
     letter-spacing: 1px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
+    margin: 10px 0;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+    border-radius: 8px; /* Smaller border radius */
     background-color: #ffffff;
-    overflow-x: auto; /* Ensure scrollable on smaller screens */
+    overflow-x: auto;
     transition: transform 0.3s ease-in-out;
 }
 
 table:hover {
-    transform: translateY(-7px); /* Slight hover lift */
+    transform: translateY(-5px); /* Less lift on hover */
 }
 
 /* Table cells */
 th, td {
-    padding: 12px;
+    padding: 8px; /* Reduced padding */
     text-align: center;
     border: 1px solid #ddd;
-    font-size: 14px;
+    font-size: 12px; /* Smaller font size */
+    word-wrap: break-word; /* Break long words */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -51,13 +52,13 @@ th {
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px; /* Reduced font size */
     letter-spacing: 1px;
 }
 
 th:hover {
-    background-color: #1f6f8b; /* Darker blue on hover */
-    transform: scale(1.03); /* Zoom effect on hover */
+    background-color: #1f6f8b;
+    transform: scale(1.03);
     animation: wobble 0.3s ease forwards;
 }
 
@@ -80,14 +81,14 @@ tbody tr:hover {
 /* Table row entrance animation */
 tbody tr {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-15px); /* Slightly less movement */
     animation: fadeInSlide 0.5s ease forwards;
 }
 
 @keyframes fadeInSlide {
     0% {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-15px);
     }
     100% {
         opacity: 1;
@@ -98,19 +99,19 @@ tbody tr {
 /* Card-like style for classes */
 strong {
     display: block;
-    font-size: 14px;
-    padding: 15px;
+    font-size: 12px; /* Reduced font size */
+    padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     background-color: #f7f7f7;
-    margin-bottom: 1px;
+    margin-bottom: 5px; /* Reduced margin */
     transition: background-color 0.2s ease, transform 0.3s ease;
 }
 
 strong:hover {
     background-color: #e1f5fe;
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* Lighter hover shadow */
 }
 
 /* Styles for theoretical and practical classes */
@@ -139,20 +140,20 @@ strong:hover {
 button {
     background-color: #2980b9;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px; /* Smaller padding */
     border: none;
-    border-radius: 8px;
+    border-radius: 6px; /* Slightly smaller radius */
     cursor: pointer;
     display: block;
-    margin: 15px auto;
-    font-size: 16px;
+    margin: 10px auto;
+    font-size: 14px; /* Smaller font size */
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s, border-color 0.3s;
 }
 
 button:hover {
     background-color: #1f6f8b;
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03); /* Slight zoom on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slightly less shadow */
     animation: pulse 0.5s ease-out infinite;
 }
 
@@ -180,24 +181,24 @@ button:focus {
 td.no-classes {
     color: #c0392b;
     font-style: italic;
-    padding: 12px 18px;
+    padding: 8px 12px; /* Reduced padding */
     border-radius: 5px;
     font-weight: bold;
     transition: transform 0.2s ease-in-out;
 }
 
 td.no-classes:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px); /* Slight hover lift */
 }
 
 /* Teacher and location styles */
 .teacher {
-    font-size: 14px;
+    font-size: 12px; /* Smaller text for mobile */
     color: #7f8c8d;
 }
 
 .location {
-    font-size: 16px;
+    font-size: 14px; /* Smaller font size */
     color: #2c3e50;
     font-weight: 500;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -205,12 +206,12 @@ td.no-classes:hover {
 
 .location:hover {
     color: #2980b9;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 /* Custom scrollbar */
 table::-webkit-scrollbar {
-    width: 8px;
+    width: 6px; /* Thinner scrollbar */
 }
 
 table::-webkit-scrollbar-thumb {
@@ -226,43 +227,52 @@ table::-webkit-scrollbar-thumb:hover {
     background-color: #1f6f8b;
 }
 
-/* Responsive Design */
+/* Mobile Specific Enhancements */
 @media (max-width: 600px) {
+    body {
+        padding: 5px; /* Reduced body padding */
+    }
+
+    h1 {
+        font-size: 24px; /* Even smaller font size */
+        margin-bottom: 10px;
+    }
+
     table {
-        margin: 10px 0;
+        margin: 5px 0;
         box-shadow: none;
     }
 
     th, td {
-        padding: 10px;
-        font-size: 12px;
+        padding: 6px 10px; /* Further reduced padding */
+        font-size: 10px; /* Smaller font size for better fitting */
     }
 
     button {
-        font-size: 14px;
-        padding: 8px 18px;
+        font-size: 12px; /* Smaller font size for buttons */
+        padding: 6px 12px; /* Even smaller padding */
+        margin: 8px auto; /* Tighter button spacing */
     }
 
-    h1 {
-        font-size: 28px;
+    /* Make class cards more compact */
+    strong {
+        display: block;
+        font-size: 10px; /* Further reduced font size */
+        padding: 8px;
+        margin: 8px 0; /* Reduced margin */
     }
-}
 
-/* Add responsive styles for digital clock and group A/B text */
-.clock, .group-status {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 15px;
-    color: #2c3e50;
-}
+    .group-status, .clock {
+        font-size: 12px; /* Smaller clock/group status font */
+        margin-top: 10px;
+    }
 
-.group-status {
-    font-weight: bold;
-    font-size: 18px;
-}
+    /* Teacher and Location */
+    .teacher, .location {
+        font-size: 10px; /* Even smaller font size */
+    }
 
-@media (max-width: 600px) {
-    .clock, .group-status {
-        font-size: 14px;
+    td.no-classes {
+        padding: 6px 8px; /* More compact padding */
     }
 }
