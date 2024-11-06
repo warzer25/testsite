@@ -1,23 +1,23 @@
-/* Import a Google Font */ 
+/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 /* Body and header styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #c1e3ff67 0%,  #495b6a 100%); /* Softer, slightly darker gradient */
+    background: linear-gradient(135deg, #c1e3ff67 0%,  #495b6a 100%); /* Softer gradient */
     margin: 0;
     padding: 20px;
-    box-sizing: border-box; /* Ensure padding doesn’t affect layout */
+    box-sizing: border-box; /* Box sizing ensures padding doesn't affect layout */
 }
 
 h1 {
     text-align: center;
     color: #2c3e50; /* Darker gray-blue */
-    margin-bottom: 20px; /* Space below the title */
-    font-weight: 700; /* Bolder title */
-    font-size: 36px; /* Slightly smaller font size */
-    letter-spacing: 1px; /* Slight letter-spacing for the title */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); /* More subtle shadow for depth */
+    margin-bottom: 20px; /* Space below title */
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); /* Subtle shadow */
 }
 
 /* Table styles */
@@ -25,231 +25,244 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15); /* Deeper shadow for the table */
-    border-radius: 12px; /* Rounded corners */
-    background-color: #ffffff; /* White background for table */
-    overflow-x: auto; /* Ensure table is scrollable on small screens */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    background-color: #ffffff;
+    overflow-x: auto; /* Ensure scrollable on smaller screens */
+    transition: transform 0.3s ease-in-out;
 }
 
 table:hover {
-    transform: translateY(-7px); /* Slightly lift the table on hover */
+    transform: translateY(-7px); /* Slight hover lift */
 }
 
 /* Table cells */
 th, td {
-    padding: 12px; /* Reduced padding for a more compact look */
+    padding: 12px;
     text-align: center;
-    border: 1px solid #ddd; /* Light border */
-    font-size: 14px; /* Smaller font size */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth background transition */
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Header styling */
 th {
-    background-color: #2980b9; /* Slightly darker blue */
+    background-color: #2980b9;
     color: white;
-    text-transform: uppercase; /* Uppercase for headers */
+    text-transform: uppercase;
     font-weight: bold;
-    font-size: 14px; /* Smaller font size for header */
-    letter-spacing: 1px; /* Spaced-out letters for header */
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 th:hover {
-    background-color: #1f6f8b; /* Even darker blue on hover */
-    transform: scale(1.03); /* Slight zoom effect on hover */
-    animation: wobble 0.3s ease forwards; /* Wobble effect on hover */
+    background-color: #1f6f8b; /* Darker blue on hover */
+    transform: scale(1.03); /* Zoom effect on hover */
+    animation: wobble 0.3s ease forwards;
 }
 
 /* Row styles for alternating colors */
 .row-odd {
-    background-color: #f2f2f2; /* Lighter gray for odd rows */
+    background-color: #f2f2f2;
 }
 
 .row-even {
-    background-color: #ffffff; /* White for even rows */
+    background-color: #ffffff;
 }
 
 /* Row hover effect */
 tbody tr:hover {
-    background-color: #d5e6f2; /* Light blue on hover */
-    transform: scale(1.03); /* Slight scale on hover */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    background-color: #d5e6f2;
+    transform: scale(1.03);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 /* Table row entrance animation */
 tbody tr {
     opacity: 0;
-    transform: translateX(-20px); /* Slide in from the left */
+    transform: translateX(-20px);
     animation: fadeInSlide 0.5s ease forwards;
 }
 
 @keyframes fadeInSlide {
     0% {
         opacity: 0;
-        transform: translateX(-20px); /* Start off-screen */
+        transform: translateX(-20px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* End in normal position */
+        transform: translateX(0);
     }
 }
 
 /* Card-like style for classes */
 strong {
     display: block;
-    font-size: 14px; /* Smaller font for class names */
+    font-size: 14px;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.1); /* Larger shadow for the class card */
-    background-color: #f7f7f7; /* Light gray background for class cards */
-    margin-bottom: 1px; /* Space between class cards */
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7;
+    margin-bottom: 1px;
     transition: background-color 0.2s ease, transform 0.3s ease;
 }
 
 strong:hover {
-    background-color: #e1f5fe; /* Light blue background on hover */
-    transform: scale(1.05); /* Zoom-in effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Larger shadow */
+    background-color: #e1f5fe;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Styles for theoretical and practical classes */
 .theoretical {
-    color: #2980b9; /* Darker blue for theoretical classes */
+    color: #2980b9;
     font-weight: bold;
 }
 
 .practical {
-    color: #e74c3c; /* Darker red for practical classes */
+    color: #e74c3c;
     font-weight: bold;
 }
 
-/* Styles for group letters */
+/* Group A and Group B styles */
 .group-a {
-    color: #8e44ad; /* Darker purple for Group A */
+    color: #8e44ad;
     font-weight: bold;
 }
 
 .group-b {
-    color: #27ae60; /* Darker green for Group B */
+    color: #27ae60;
     font-weight: bold;
 }
 
 /* Button styles */
 button {
-    background-color: #2980b9; /* Darker blue button */
+    background-color: #2980b9;
     color: white;
-    padding: 10px 20px; /* Smaller padding for the button */
+    padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     display: block;
-    margin: 15px auto; /* Adjusted margin */
-    font-size: 16px; /* Smaller font for buttons */
+    margin: 15px auto;
+    font-size: 16px;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s, border-color 0.3s;
 }
 
 button:hover {
-    background-color: #1f6f8b; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly scale on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
-    animation: pulse 0.5s ease-out infinite; /* Pulse effect */
+    background-color: #1f6f8b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: pulse 0.5s ease-out infinite;
 }
 
 button:active {
-    background-color: #1b5988; /* Even darker blue when clicked */
-    transform: scale(0.98); 
-    animation: none; /* Remove pulse when clicked */
+    background-color: #1b5988;
+    transform: scale(0.98);
+    animation: none;
 }
 
 button:focus {
     outline: 3px solid #2980b9;
     outline-offset: 4px;
-    box-shadow: 0 0 10px rgba(41, 128, 185, 0.7); /* Glow effect on focus */
-    transform: scale(1.03); /* Slightly enlarge the button */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.7);
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1); /* Expand slightly */
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* No classes style */
 td.no-classes {
-    color: #c0392b; /* Dark red text color */
+    color: #c0392b;
     font-style: italic;
     padding: 12px 18px;
-    border-radius: 5px; /* Rounded corners for no-classes cell */
+    border-radius: 5px;
     font-weight: bold;
-    transition: transform 0.2s ease-in-out; /* Smooth effect for the no-class cell */
+    transition: transform 0.2s ease-in-out;
 }
 
 td.no-classes:hover {
-    transform: translateY(-3px); /* Slight lift when hovered */
+    transform: translateY(-3px);
 }
 
 /* Teacher and location styles */
 .teacher {
     font-size: 14px;
-    color: #7f8c8d; /* Darker gray for text */
+    color: #7f8c8d;
 }
 
 .location {
-    font-size: 16px; /* Slightly smaller font for locations */
-    color: #2c3e50; /* Darker color for better contrast */
-    font-weight: 500; /* Slightly bolder text */
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: 500;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .location:hover {
-    color: #2980b9; /* Change color on hover */
-    transform: translateY(-3px); /* Hover effect for location */
+    color: #2980b9;
+    transform: translateY(-3px);
 }
 
 /* Custom scrollbar */
 table::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px;
 }
 
 table::-webkit-scrollbar-thumb {
-    background-color: #2980b9; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Rounded edges for scrollbar thumb */
+    background-color: #2980b9;
+    border-radius: 10px;
 }
 
 table::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Background of the scrollbar track */
+    background: #f1f1f1;
 }
 
 table::-webkit-scrollbar-thumb:hover {
-    background-color: #1f6f8b; /* Darker thumb on hover */
+    background-color: #1f6f8b;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
     table {
         margin: 10px 0;
-        box-shadow: none; /* Remove shadow on mobile */
+        box-shadow: none;
     }
 
     th, td {
-        padding: 10px; /* Slightly smaller padding */
-        font-size: 12px; /* Smaller font size */
+        padding: 10px;
+        font-size: 12px;
     }
 
     button {
-        font-size: 14px; /* Smaller button font size */
+        font-size: 14px;
         padding: 8px 18px;
     }
 
     h1 {
-        font-size: 28px; /* Smaller title on mobile */
+        font-size: 28px;
+    }
+}
+
+/* Add responsive styles for digital clock and group A/B text */
+.clock, .group-status {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+    color: #2c3e50;
+}
+
+.group-status {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .clock, .group-status {
+        font-size: 14px;
     }
 }
