@@ -68,7 +68,7 @@ function switchgroup() {
 }
 
 // Get today's date and the upcoming Monday's week number
-const today = new Date('2024-11-9');
+const today = new Date();
 const nextMonday = getNextMonday(today);
 const nextMondayWeekNumber = getWeekOfYear(nextMonday);
 console.log("Next Monday's week number: " + nextMondayWeekNumber); // Debugging the week number
