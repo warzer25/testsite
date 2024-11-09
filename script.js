@@ -20,13 +20,21 @@ function swapAndToggle(element1, element2) {
     element2.classList.toggle("group-b");
 }
 
-const today = new Date(); // Get today's date dynamically
-
+// Helper function to get the week number for a specific date
 function getWeekOfYear(date) {
     const startDate = new Date(date.getFullYear(), 0, 1); // January 1st
     const diff = date - startDate; // Difference in milliseconds
     const oneWeek = 1000 * 60 * 60 * 24 * 7; // milliseconds in one week
-    return Math.ceil(diff / oneWeek) + 1; // Week number (add 1 to start from week 1)
+    return Math.ceil(diff / oneWeek); // Week number
+}
+
+// Function to get the upcoming Monday's date
+function getNextMonday(date) {
+    const nextMonday = new Date(date);
+    const dayOfWeek = date.getDay();
+    const daysUntilMonday = (8 - dayOfWeek) % 7; // Calculate days until Monday
+    nextMonday.setDate(date.getDate() + daysUntilMonday);
+    return nextMonday;
 }
 
 function switchgroup() {
@@ -59,35 +67,51 @@ function switchgroup() {
     swapAndToggle(d2, d3);
 }
 
-// Get the current week number (dynamically)
-const weekNumber = getWeekOfYear(today);
-console.log("Current week number: " + weekNumber); // Debugging the week number
+// Get today's date and the upcoming Monday's week number
+const today = new Date('2024-11-9');
+const nextMonday = getNextMonday(today);
+const nextMondayWeekNumber = getWeekOfYear(nextMonday);
+console.log("Next Monday's week number: " + nextMondayWeekNumber); // Debugging the week number
 
-// Trigger the group switch based on the current week
-if (weekNumber % 2 !== 0) {
-    console.log("It's an even week. No action needed.");
-} else {
-    console.log("It's an odd week! Triggering switchgroup.");
+// Trigger the group switch based on the upcoming Monday's week number
+if (nextMondayWeekNumber % 2 !== 0) {
+    console.log("Next Monday is an odd week. Triggering switchgroup.");
     switchgroup();
+} else {
+    console.log("Next Monday is an even week. No action needed.");
 }
 
 // Digital clock
 function updateClock() {
     const clock = document.getElementById("clock");
     const now = new Date();
+    
+    // Get hours, minutes, and seconds
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
-    clock.textContent = `${hours}:${minutes}:${seconds}`;
+    
+    // Get full date (weekday, month, day, year)
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    const dayOfWeek = daysOfWeek[now.getDay()]; // Get the day of the week
+    const month = months[now.getMonth()]; // Get the month
+    const dayOfMonth = now.getDate(); // Get the day of the month
+    const year = now.getFullYear(); // Get the year
+    
+    // Update the clock element with both time and full date
+    clock.textContent = `${dayOfWeek}, ${month} ${dayOfMonth}, ${year} ${hours}:${minutes}:${seconds}`;
 }
 
-// Display group message based on the week
+
+// Display group message based on the upcoming Monday's week number
 function displayGroupMessage() {
     const message = document.getElementById("groupMessage");
-    if (weekNumber % 2 !== 0) {
-        message.textContent = "Group B is first this week!";
-    } else {
+    if (nextMondayWeekNumber % 2 !== 0) {
         message.textContent = "Group A is first this week!";
+    } else {
+        message.textContent = "Group B is first this week!";
     }
 }
 
