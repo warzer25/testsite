@@ -75,10 +75,10 @@ console.log("Next Monday's week number: " + nextMondayWeekNumber); // Debugging 
 
 // Trigger the group switch based on the upcoming Monday's week number
 if (nextMondayWeekNumber % 2 !== 0) {
+    console.log("Next Monday is an even week. No action needed.");
+} else {
     console.log("Next Monday is an odd week. Triggering switchgroup.");
     switchgroup();
-} else {
-    console.log("Next Monday is an even week. No action needed.");
 }
 
 // Digital clock
@@ -109,9 +109,9 @@ function updateClock() {
 function displayGroupMessage() {
     const message = document.getElementById("groupMessage");
     if (nextMondayWeekNumber % 2 !== 0) {
-        message.textContent = "Group A is first this week!";
-    } else {
         message.textContent = "Group B is first this week!";
+    } else {
+        message.textContent = "Group A is first this week!";
     }
 }
 
