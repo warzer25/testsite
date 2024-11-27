@@ -67,61 +67,73 @@ function switchgroup() {
     swapAndToggle(d2, d3);
 }
 
-// Get today's date and the upcoming Monday's week number
-const today = new Date();
-const nextMonday = getNextMonday(today);
-const nextMondayWeekNumber = getWeekOfYear(nextMonday);
-console.log("Next Monday's week number: " + nextMondayWeekNumber); // Debugging the week number
-
-// Trigger the group switch based on the upcoming Monday's week number
-if (nextMondayWeekNumber % 2 !== 0) {
-    
-    console.log("Next Monday is an odd week. Triggering switchgroup.");
-    switchgroup();
-    
-} else {
-    console.log("Next Monday is an even week. No action needed.");
+// Helper function to fetch time from an online source
+async function fetchServerTime() {
+    try {
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');
+        if (!response.ok) throw new Error('Failed to fetch time');
+        const data = await response.json();
+        return new Date(data.datetime); // Convert server time to Date object
+    } catch (error) {
+        console.error("Error fetching server time:", error);
+        return new Date(); // Fallback to client time in case of an error
+    }
 }
 
 // Digital clock
-function updateClock() {
+function updateClock(date) {
     const clock = document.getElementById("clock");
-    const now = new Date();
-    
+
     // Get hours, minutes, and seconds
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
     // Get full date (weekday, month, day, year)
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
-    const dayOfWeek = daysOfWeek[now.getDay()]; // Get the day of the week
-    const month = months[now.getMonth()]; // Get the month
-    const dayOfMonth = now.getDate(); // Get the day of the month
-    const year = now.getFullYear(); // Get the year
-    
+
+    const dayOfWeek = daysOfWeek[date.getDay()]; // Get the day of the week
+    const month = months[date.getMonth()]; // Get the month
+    const dayOfMonth = date.getDate(); // Get the day of the month
+    const year = date.getFullYear(); // Get the year
+
     // Update the clock element with both time and full date
     clock.textContent = `${dayOfWeek}, ${month} ${dayOfMonth}, ${year} ${hours}:${minutes}:${seconds}`;
 }
 
-
-// Display group message based on the upcoming Monday's week number
-function displayGroupMessage() {
+// Function to update the group message
+function displayGroupMessage(nextMondayWeekNumber) {
     const message = document.getElementById("groupMessage");
     if (nextMondayWeekNumber % 2 !== 0) {
-        
         message.textContent = "Group A is first this week!";
     } else {
-        
         message.textContent = "Group B is first this week!";
     }
 }
 
-// Call the functions on load
-document.addEventListener("DOMContentLoaded", function() {
-    updateClock(); // Set the clock initially
-    displayGroupMessage(); // Set the group message
-    setInterval(updateClock, 1000); // Update the clock every second
-});
+// Main function to initialize the app
+async function initializeApp() {
+    const serverTime = await fetchServerTime(); // Fetch server time
+    const nextMonday = getNextMonday(serverTime);
+    const nextMondayWeekNumber = getWeekOfYear(nextMonday);
+    
+    console.log("Next Monday's week number:", nextMondayWeekNumber); // Debugging the week number
+    
+    // Display the group message
+    displayGroupMessage(nextMondayWeekNumber);
+    
+    // Trigger the group switch if it's an odd week
+    if (nextMondayWeekNumber % 2 !== 0) {
+        console.log("Next Monday is an odd week. Triggering switchgroup.");
+        switchgroup();
+    } else {
+        console.log("Next Monday is an even week. No action needed.");
+    }
+
+    // Start the clock
+    setInterval(() => updateClock(new Date()), 1000); // Update the clock every second
+}
+
+// Trigger the initialization when the document is ready
+document.addEventListener("DOMContentLoaded", initializeApp);
