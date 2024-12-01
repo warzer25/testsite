@@ -28,13 +28,13 @@ function getWeekOfYear(date) {
     return Math.ceil(diff / oneWeek); // Week number
 }
 
-// Function to get the upcoming Monday's date
-function getNextMonday(date) {
-    const nextMonday = new Date(date);
+// Function to get the upcoming Sunday's date
+function getNextSunday(date) {
+    const nextSunday = new Date(date);
     const dayOfWeek = date.getDay();
-    const daysUntilMonday = (8 - dayOfWeek) % 7; // Calculate days until Monday
-    nextMonday.setDate(date.getDate() + daysUntilMonday);
-    return nextMonday;
+    const daysUntilSunday = (7 - dayOfWeek) % 7; // Calculate days until Sunday
+    nextSunday.setDate(date.getDate() + daysUntilSunday);
+    return nextSunday;
 }
 
 function switchgroup() {
@@ -103,9 +103,9 @@ function updateClock(date) {
 }
 
 // Function to update the group message
-function displayGroupMessage(nextMondayWeekNumber) {
+function displayGroupMessage(nextSundayWeekNumber) {
     const message = document.getElementById("groupMessage");
-    if (nextMondayWeekNumber % 2 !== 0) {
+    if (nextSundayWeekNumber % 2 !== 0) {
         message.textContent = "Group A is first this week!";
     } else {
         message.textContent = "Group B is first this week!";
@@ -115,20 +115,20 @@ function displayGroupMessage(nextMondayWeekNumber) {
 // Main function to initialize the app
 async function initializeApp() {
     const serverTime = await fetchServerTime(); // Fetch server time
-    const nextMonday = getNextMonday(serverTime);
-    const nextMondayWeekNumber = getWeekOfYear(nextMonday);
+    const nextSunday = getNextSunday(serverTime); // Get the next Sunday
+    const nextSundayWeekNumber = getWeekOfYear(nextSunday);
     
-    console.log("Next Monday's week number:", nextMondayWeekNumber); // Debugging the week number
+    console.log("Next Sunday's week number:", nextSundayWeekNumber); // Debugging the week number
     
     // Display the group message
-    displayGroupMessage(nextMondayWeekNumber);
+    displayGroupMessage(nextSundayWeekNumber);
     
     // Trigger the group switch if it's an odd week
-    if (nextMondayWeekNumber % 2 !== 0) {
-        console.log("Next Monday is an odd week. Triggering switchgroup.");
+    if (nextSundayWeekNumber % 2 !== 0) {
+        console.log("Next Sunday is an odd week. Triggering switchgroup.");
         switchgroup();
     } else {
-        console.log("Next Monday is an even week. No action needed.");
+        console.log("Next Sunday is an even week. No action needed.");
     }
 
     // Start the clock
