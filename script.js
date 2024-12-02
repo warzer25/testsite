@@ -112,21 +112,27 @@ function displayGroupMessage(nextSundayWeekNumber) {
     }
 }
 
+// Global flag to track the last switched week
+let lastSwitchedWeek = null; // Keeps track of the last switched week
+
 // Main function to initialize the app
 async function initializeApp() {
     const serverTime = await fetchServerTime(); // Fetch server time
     const nextSunday = getNextSunday(serverTime); // Get the next Sunday
-    const nextSundayWeekNumber = getWeekOfYear(nextSunday);
+    const nextSundayWeekNumber = getWeekOfYear(nextSunday); // Week number for next Sunday
     
     console.log("Next Sunday's week number:", nextSundayWeekNumber); // Debugging the week number
     
     // Display the group message
     displayGroupMessage(nextSundayWeekNumber);
     
-    // Trigger the group switch if it's an odd week
-    if (nextSundayWeekNumber % 2 !== 0) {
+    // Ensure the group switch happens only once per week
+    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 !== 0) {
         console.log("Next Sunday is an odd week. Triggering switchgroup.");
         switchgroup();
+        lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
+    } else if (nextSundayWeekNumber === lastSwitchedWeek) {
+        console.log("Group switch already happened for this week. Skipping.");
     } else {
         console.log("Next Sunday is an even week. No action needed.");
     }
