@@ -106,9 +106,10 @@ function updateClock(date) {
 function displayGroupMessage(nextSundayWeekNumber) {
     const message = document.getElementById("groupMessage");
     if (nextSundayWeekNumber % 2 !== 0) {
-        message.textContent = "Group A is first this week!";
-    } else {
+        
         message.textContent = "Group B is first this week!";
+    } else {
+        message.textContent = "Group A is first this week!";
     }
 }
 
@@ -126,16 +127,17 @@ async function initializeApp() {
     // Display the group message
     displayGroupMessage(nextSundayWeekNumber);
     
-    // Ensure the group switch happens only once per week
-    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 !== 0) {
-        console.log("Next Sunday is an odd week. Triggering switchgroup.");
-        switchgroup();
-        lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
-    } else if (nextSundayWeekNumber === lastSwitchedWeek) {
-        console.log("Group switch already happened for this week. Skipping.");
-    } else {
-        console.log("Next Sunday is an even week. No action needed.");
-    }
+// Ensure the group switch happens only once per week
+if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 0) {
+    console.log("Next Sunday is an even week. Triggering switchgroup for Group B.");
+    switchgroup(); // Trigger switch to reverse the groups
+    lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
+} else if (nextSundayWeekNumber === lastSwitchedWeek) {
+    console.log("Group switch already happened for this week. Skipping.");
+} else {
+    console.log("Next Sunday is an odd week. No action needed.");
+}
+
 
     // Start the clock
     setInterval(() => updateClock(new Date()), 1000); // Update the clock every second
