@@ -106,7 +106,6 @@ function updateClock(date) {
 function displayGroupMessage(nextSundayWeekNumber) {
     const message = document.getElementById("groupMessage");
     if (nextSundayWeekNumber % 2 !== 0) {
-        
         message.textContent = "Group B is first this week!";
     } else {
         message.textContent = "Group A is first this week!";
@@ -119,28 +118,38 @@ let lastSwitchedWeek = null; // Keeps track of the last switched week
 // Main function to initialize the app
 async function initializeApp() {
     const serverTime = await fetchServerTime(); // Fetch server time
-    const nextSunday = getNextSunday(serverTime); // Get the next Sunday
+    const today = serverTime.getDay(); // Get the current day (0 = Sunday, 1 = Monday, etc.)
+    const nextSunday = today === 0 ? serverTime : getNextSunday(serverTime); // If today is Sunday, use today's date
     const nextSundayWeekNumber = getWeekOfYear(nextSunday); // Week number for next Sunday
     
     console.log("Next Sunday's week number:", nextSundayWeekNumber); // Debugging the week number
-    
+    console.log("Today is:", today === 0 ? "Sunday" : "Not Sunday"); // Debug current day
+
     // Display the group message
     displayGroupMessage(nextSundayWeekNumber);
-    
-// Ensure the group switch happens only once per week
-if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 0) {
-    console.log("Next Sunday is an even week. Triggering switchgroup for Group B.");
-    switchgroup(); // Trigger switch to reverse the groups
-    lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
-} else if (nextSundayWeekNumber === lastSwitchedWeek) {
-    console.log("Group switch already happened for this week. Skipping.");
-} else {
-    console.log("Next Sunday is an odd week. No action needed.");
-}
 
+    // Ensure the group switch happens only once per week
+    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 0) {
+        console.log("This week is an even week. Triggering switchgroup for Group B.");
+        switchgroup(); // Trigger switch to reverse the groups
+        lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
+    } else if (nextSundayWeekNumber === lastSwitchedWeek) {
+        console.log("Group switch already happened for this week. Skipping.");
+    } else {
+        console.log("This week is an odd week. No action needed.");
+    }
 
     // Start the clock
-    setInterval(() => updateClock(new Date()), 1000); // Update the clock every second
+    setInterval(() => {
+        const now = new Date();
+        updateClock(now);
+        // Check for Sunday every second and trigger the switch if necessary
+        if (now.getDay() === 0 && getWeekOfYear(now) !== lastSwitchedWeek) {
+            console.log("Today is Sunday. Triggering switchgroup.");
+            switchgroup();
+            lastSwitchedWeek = getWeekOfYear(now); // Update the flag
+        }
+    }, 1000); // Update the clock every second
 }
 
 // Trigger the initialization when the document is ready
