@@ -106,9 +106,10 @@ function updateClock(date) {
 function displayGroupMessage(nextSundayWeekNumber) {
     const message = document.getElementById("groupMessage");
     if (nextSundayWeekNumber % 2 !== 0) {
-        message.textContent = "Group B is first this week!";
-    } else {
+        
         message.textContent = "Group A is first this week!";
+    } else {
+        message.textContent = "Group B is first this week!";
     }
 }
 
