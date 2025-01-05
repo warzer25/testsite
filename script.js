@@ -32,8 +32,7 @@ function getWeekOfYear(date) {
 function getNextSunday(date) {
     const nextSunday = new Date(date);
     const dayOfWeek = date.getDay();
-    const daysUntilSunday = (7 - dayOfWeek) % 7// Get all rows in the table body
-
+    const daysUntilSunday = (7 - dayOfWeek) % 7; // Calculate days until Sunday
     nextSunday.setDate(date.getDate() + daysUntilSunday);
     return nextSunday;
 }
@@ -107,9 +106,9 @@ function updateClock(date) {
 function displayGroupMessage(nextSundayWeekNumber) {
     const message = document.getElementById("groupMessage");
     if (nextSundayWeekNumber % 2 !== 0) {
-
+        message.textContent = "Group B is first this week!";
     } else {
-        
+        message.textContent = "Group A is first this week!";
     }
 }
 
