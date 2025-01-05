@@ -141,7 +141,7 @@ async function initializeApp() {
 
     // Start the clock
     setInterval(() => {
-        const now = new Date();
+        const now = new Date('2020-10-10');
         updateClock(now);
         // Check for Sunday every second and trigger the switch if necessary
         if (now.getDay() === 0 && getWeekOfYear(now) !== lastSwitchedWeek) {
