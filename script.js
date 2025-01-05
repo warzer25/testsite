@@ -1,3 +1,10 @@
+function forceSwitchGroups() {
+    console.log("Forcing group switch...");
+    switchgroup(); // Directly invoke the switching logic
+    console.log("Group switch completed.");
+}
+
+
 // Get all rows in the table body
 const rows = document.querySelectorAll('table tbody tr');
 // Loop through the rows and assign alternating classes
