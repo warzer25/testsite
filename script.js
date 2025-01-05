@@ -1,8 +1,3 @@
-(function forceSwitchImmediately() {
-    console.log("Force switching groups without conditions...");
-    switchgroup(); // Directly invoke the switching logic
-    console.log("Groups have been switched forcefully.");
-})();
 
 // Get all rows in the table body
 const rows = document.querySelectorAll('table tbody tr');
