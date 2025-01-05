@@ -132,7 +132,7 @@ async function initializeApp() {
     displayGroupMessage(nextSundayWeekNumber);
 
     // Ensure the group switch happens only once per week
-    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 !== 0) {
+    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 0) {
         console.log("Next Sunday is an odd week. Triggering switchgroup.");
         switchgroup();
         lastSwitchedWeek = nextSundayWeekNumber;
@@ -142,17 +142,13 @@ async function initializeApp() {
         console.log("Next Sunday is an even week. No action needed.");
     }
 
-    // Start the clock
-    setInterval(() => {
-        const now = new Date();
-        updateClock(now);
-        // Check for Sunday every second and trigger the switch if necessary
-        if (now.getDay() === 0 && getWeekOfYear(now) !== lastSwitchedWeek) {
-            console.log("Today is Sunday. Triggering switchgroup.");
-            switchgroup();
-            lastSwitchedWeek = getWeekOfYear(now); // Update the flag
-        }
-    }, 1000); // Update the clock every second
+// Update the clock every second
+setInterval(() => {
+    const now = new Date();
+    updateClock(now);
+}, 1000); // Update clock every second
+
+// Check for Sunday and trigger the switch once a minute
 }
 
 // Trigger the initialization when the document is ready
