@@ -1,4 +1,7 @@
 // Get all rows in the table body
+
+const testDate = new Date('2020-10-10');
+
 const rows = document.querySelectorAll('table tbody tr');
 // Loop through the rows and assign alternating classes
 rows.forEach((row, index) => {
@@ -118,7 +121,7 @@ let lastSwitchedWeek = null; // Keeps track of the last switched week
 // Main function to initialize the app
 async function initializeApp() {
     const serverTime = await fetchServerTime(); // Fetch server time
-    const today = serverTime.getDay('2020-10-10'); // Get the current day (0 = Sunday, 1 = Monday, etc.)
+    const today = serverTime.getDay(); // Get the current day (0 = Sunday, 1 = Monday, etc.)
     const nextSunday = today === 0 ? serverTime : getNextSunday(serverTime); // If today is Sunday, use today's date
     const nextSundayWeekNumber = getWeekOfYear(nextSunday); // Week number for next Sunday
     
@@ -141,7 +144,7 @@ async function initializeApp() {
 
     // Start the clock
     setInterval(() => {
-        const now = new Date('2020-10-10');
+        const now = new Date();
         updateClock(now);
         // Check for Sunday every second and trigger the switch if necessary
         if (now.getDay() === 0 && getWeekOfYear(now) !== lastSwitchedWeek) {
