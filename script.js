@@ -119,7 +119,7 @@ let lastSwitchedWeek = null; // Keeps track of the last switched week
 async function initializeApp() {
     const serverTime = await fetchServerTime(); // Fetch server time
     const today = serverTime.getDay(); // Get the current day (0 = Sunday, 1 = Monday, etc.)
-    const nextSunday = today === 0 ? serverTime : getNextSunday(serverTime); // If today is Sunday, use today's date
+    const nextSunday = today === 4 ? serverTime : getNextSunday(serverTime); // If today is Sunday, use today's date
     const nextSundayWeekNumber = getWeekOfYear(nextSunday); // Week number for next Sunday
     
     console.log("Next Sunday's week number:", nextSundayWeekNumber); // Debugging the week number
