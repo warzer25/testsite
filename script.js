@@ -130,7 +130,7 @@ async function initializeApp() {
     displayGroupMessage(nextSundayWeekNumber);
 
     // Ensure the group switch happens only once per week
-    if (nextSundayWeekNumber % 2 === 1) {
+    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 1) {
         console.log("This week is an even week. Triggering switchgroup for Group B.");
         switchgroup(); // Trigger switch to reverse the groups
         lastSwitchedWeek = nextSundayWeekNumber; // Update the flag
