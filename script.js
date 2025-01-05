@@ -1,4 +1,3 @@
-
 // Get all rows in the table body
 const rows = document.querySelectorAll('table tbody tr');
 // Loop through the rows and assign alternating classes
@@ -33,41 +32,7 @@ function getWeekOfYear(date) {
 function getNextSunday(date) {
     const nextSunday = new Date(date);
     const dayOfWeek = date.getDay();
-    const daysUntilSunday = (7 - dayOfWeek) % 7// Get all rows in the table body
-const rows = document.querySelectorAll('table tbody tr');
-// Loop through the rows and assign alternating classes
-rows.forEach((row, index) => {
-    if (index % 2 === 0) {
-        row.classList.add('row-even'); // Even rows
-    } else {
-        row.classList.add('row-odd'); // Odd rows
-    }
-});
-
-function swapAndToggle(element1, element2) {
-    let temp = element1.textContent;
-    element1.textContent = element2.textContent;
-    element2.textContent = temp;
-
-    element1.classList.toggle("group-a");
-    element1.classList.toggle("group-b");
-    element2.classList.toggle("group-a");
-    element2.classList.toggle("group-b");
-}
-
-// Helper function to get the week number for a specific date
-function getWeekOfYear(date) {
-    const startDate = new Date(date.getFullYear(), 0, 1); // January 1st
-    const diff = date - startDate; // Difference in milliseconds
-    const oneWeek = 1000 * 60 * 60 * 24 * 7; // milliseconds in one week
-    return Math.ceil(diff / oneWeek); // Week number
-}
-
-// Function to get the upcoming Sunday's date
-function getNextSunday(date) {
-    const nextSunday = new Date(date);
-    const dayOfWeek = date.getDay();
-    const daysUntilSunday = (7 - dayOfWeek) % 7;
+    const daysUntilSunday = (7 - dayOfWeek) % 7; // Calculate days until Sunday
     nextSunday.setDate(date.getDate() + daysUntilSunday);
     return nextSunday;
 }
