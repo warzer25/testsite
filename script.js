@@ -32,7 +32,8 @@ function getWeekOfYear(date) {
 function getNextSunday(date) {
     const nextSunday = new Date(date);
     const dayOfWeek = date.getDay();
-    const daysUntilSunday = (7 - dayOfWeek) % 7; // Calculate days until Sunday
+    const daysUntilSunday = (7 - dayOfWeek) % 7// Get all rows in the table body
+
     nextSunday.setDate(date.getDate() + daysUntilSunday);
     return nextSunday;
 }
