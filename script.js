@@ -130,7 +130,7 @@ async function initializeApp() {
     displayGroupMessage(nextSundayWeekNumber);
 
     // Ensure the group switch happens only once per week
-    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 0) {
+    if (nextSundayWeekNumber !== lastSwitchedWeek && nextSundayWeekNumber % 2 === 1) {
         console.log("Next Sunday is an odd week. Triggering switchgroup.");
         switchgroup();
         lastSwitchedWeek = nextSundayWeekNumber;
